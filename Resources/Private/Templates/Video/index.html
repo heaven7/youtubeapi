@@ -1,0 +1,33 @@
+<f:layout name="default" />
+
+<f:section name="main">
+<h3>{query}</h3>
+
+<f:flashMessages />
+<f:if condition="{settings.showTotalResult}">
+  <p>Total: {videos.totalResult}</p>
+</f:if>
+<table>
+	<tr>
+		<th><f:translate key="tx_youtubeapi_domain_model_video.title" /></th>
+		<th><f:translate key="tx_youtubeapi_domain_model_video.author" /></th>
+		<th><f:translate key="tx_youtubeapi_domain_model_video.description" /></th>
+		<th><f:translate key="tx_youtubeapi_domain_model_video.vid" /></th>
+		<th><f:translate key="tx_youtubeapi_domain_model_video.keywords" /></th>
+		<th><f:translate key="tx_youtubeapi_domain_model_video.category" /></th>
+		<th> </th>
+		<th> </th>
+	</tr>
+	<f:for each="{videos}" as="video" key="label">
+		<tr>
+			<td><img src="{video.thumbnail}" alt="{video.title}" />{video.title}</td>
+			<td>{video.author}</td>
+			<td>{video.description}</td>
+			<td>{video.vid}</td>
+			<td>{video.keywords}</td>
+			<td>{video.category}</td>
+		</tr>
+	</f:for>
+</table>
+
+</f:section>

@@ -1,0 +1,27 @@
+<f:layout name="default" />
+
+This template displays a EDIT form for the current domain object.
+
+<f:section name="main">
+<h1>Edit Video</h1>
+
+<f:flashMessages />
+
+<f:render partial="formErrors" />
+
+<f:form method="post" action="update" name="video" object="{video}">
+	<label for="title"><f:translate key="tx_youtubeapi_domain_model_video.title" /></label><br />
+	<f:form.textbox property="title" /><br />
+	<label for="title"><f:translate key="tx_youtubeapi_domain_model_video.author" /></label><br />
+	<f:form.textbox property="author" /><br />
+	<label for="title"><f:translate key="tx_youtubeapi_domain_model_video.description" /></label><br />
+	<f:form.textbox property="description" /><br />
+	<label for="title"><f:translate key="tx_youtubeapi_domain_model_video.vid" /></label><br />
+	<f:form.textbox property="vid" /><br />
+	<label for="title"><f:translate key="tx_youtubeapi_domain_model_video.keywords" /></label><br />
+	<f:form.textbox property="keywords" /><br />
+	<label for="title"><f:translate key="tx_youtubeapi_domain_model_video.category" /></label><br />
+	<f:form.textbox property="category" /><br />
+	<f:form.submit value="Edit" />
+</f:form>
+</f:section>

@@ -1,0 +1,21 @@
+<f:layout name="default" />
+
+This template displays a EDIT form for the current domain object.
+
+<f:section name="main">
+<h1>Edit Comment</h1>
+
+<f:flashMessages />
+
+<f:render partial="formErrors" />
+
+<f:form method="post" action="update" name="comment" object="{comment}">
+	<label for="title"><f:translate key="tx_youtubeapi_domain_model_comment.title" /></label><br />
+	<f:form.textbox property="title" /><br />
+	<label for="title"><f:translate key="tx_youtubeapi_domain_model_comment.author" /></label><br />
+	<f:form.textbox property="author" /><br />
+	<label for="title"><f:translate key="tx_youtubeapi_domain_model_comment.body" /></label><br />
+	<f:form.textbox property="body" /><br />
+	<f:form.submit value="Edit" />
+</f:form>
+</f:section>

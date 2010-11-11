@@ -1,0 +1,24 @@
+plugin.tx_youtubeapi.settings {
+  maxResults = 5
+  test = 'ah'
+}
+
+plugin.tx_youtubeapi._CSS_DEFAULT_STYLE (
+	input.f3-form-error {
+		background-color:#FF9F9F;
+		border: 1px #FF0000 solid;
+	}
+
+	.tx-youtubeapi-pi1 table {
+		border-collapse:separate;
+		border-spacing:10px;
+	}
+
+	.tx-youtubeapi-pi1 table th {
+		font-weight:bold;
+	}
+
+	.tx-youtubeapi-pi1 table td {
+		vertical-align:top;
+	}
+)

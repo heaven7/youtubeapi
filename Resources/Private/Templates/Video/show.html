@@ -1,0 +1,40 @@
+<f:layout name="default" />
+
+This Template is responsible for creating a single view for a domain object
+
+<f:section name="main">
+<h1>Single View for Video</h1>
+
+<f:flashMessages />
+
+<table>
+	<tr>
+		<td><f:translate key="tx_youtubeapi_domain_model_video.title" /></td>
+		<td>{video.title}</td>
+	</tr>
+	<tr>
+		<td><f:translate key="tx_youtubeapi_domain_model_video.author" /></td>
+		<td>{video.author}</td>
+	</tr>
+	<tr>
+		<td><f:translate key="tx_youtubeapi_domain_model_video.description" /></td>
+		<td>{video.description}</td>
+	</tr>
+	<tr>
+		<td><f:translate key="tx_youtubeapi_domain_model_video.vid" /></td>
+		<td>{video.vid}</td>
+	</tr>
+	<tr>
+		<td><f:translate key="tx_youtubeapi_domain_model_video.keywords" /></td>
+		<td>{video.keywords}</td>
+	</tr>
+	<tr>
+		<td><f:translate key="tx_youtubeapi_domain_model_video.category" /></td>
+		<td>{video.category}</td>
+	</tr>
+</table>
+<f:link.action action="edit" arguments="{video : video}">Edit</f:link.action>
+<f:link.action action="delete" arguments="{video : video}">Delete</f:link.action>
+
+<f:link.action action="index">Back to listing</f:link.action>
+</f:section>

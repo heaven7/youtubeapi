@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>database</type>
+		<description>Language labels for database tables/fields belonging to extension 'youtubeapi'</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+		  <label index="sheet_options">Options</label>
+			<label index="sheet_displayParameters">Display</label>
+			<label index="sheet_pages">Pages</label>
+			<label index="sheet_player">Player</label>
+			<label index="sheet_search">Search</label>
+			
+			<label index="tx_youtubeapi_domain_model_video">Video</label>
+			<label index="tx_youtubeapi_domain_model_video.title">Title</label>
+			<label index="tx_youtubeapi_domain_model_video.author">Author</label>
+			<label index="tx_youtubeapi_domain_model_video.description">Description</label>
+			<label index="tx_youtubeapi_domain_model_video.vid">Vid</label>
+			<label index="tx_youtubeapi_domain_model_video.keywords">Keywords</label>
+			<label index="tx_youtubeapi_domain_model_video.category">Category</label>
+			<label index="tx_youtubeapi_domain_model_video.assignment">Assignment</label>
+			<label index="tx_youtubeapi_domain_model_video.related">Related</label>
+			<label index="tx_youtubeapi_domain_model_feed">Feed</label>
+			<label index="tx_youtubeapi_domain_model_feed.url">Url</label>
+			<label index="tx_youtubeapi_domain_model_user">User</label>
+			<label index="tx_youtubeapi_domain_model_user.username">Username</label>
+			<label index="tx_youtubeapi_domain_model_comment">Comment</label>
+			<label index="tx_youtubeapi_domain_model_comment.title">Title</label>
+			<label index="tx_youtubeapi_domain_model_comment.author">Author</label>
+			<label index="tx_youtubeapi_domain_model_comment.body">Body</label>
+			<label index="tx_youtubeapi_domain_model_assignment">Assignment</label>
+			<label index="tx_youtubeapi_domain_model_assignment.user">User</label>
+			<label index="tx_youtubeapi_domain_model_assignment.feed">Feed</label>
+			<label index="tx_youtubeapi_domain_model_assignment.video">Video</label>
+			<label index="tx_youtubeapi_domain_model_assignment.comment">Comment</label>
+			
+			<label index="flexform.maxResults">Number results per page</label>
+      <label index="flexform.singlePage">Singlepage</label>
+			<label index="flexform.userPage">Userpage</label>
+			<label index="flexform.uploadPage">Uploadpage</label>
+			<label index="flexform.singlePageOnListPage">Show SinglePage on this Page</label>
+			<label index="flexform.showEmbedded">Show videos embedded</label>
+      <label index="flexform.orderBy">Sort by</label>
+			<label index="flexform.orderByRelevance">Relevance</label>
+			<label index="flexform.orderByPublished">Published</label>
+			<label index="flexform.orderByUpdated">Updated</label>
+			<label index="flexform.orderByViewCount">ViewCount</label>
+			<label index="flexform.user">Youtube user</label>
+			<label index="flexform.searchTerm">Searchterm</label>
+			<label index="flexform.category">Category</label>
+			<label index="flexform.keywords">Keyword(s)</label>
+			<label index="flexform.favorites">Favorites of user</label>
+			<label index="flexform.channel">Channel</label>
+			<label index="flexform.videoIds">Video Ids (comma separated or blank)</label>
+			<label index="flexform.playList">Playlist-ID</label>
+			<label index="flexform.related">Related</label>
+			<label index="flexform.showSearchBox">Searchbox</label>
+			<label index="flexform.showTotalResult">Total result</label>
+			<label index="flexform.showPageBrowser">Pagebrowser</label>
+			<label index="flexform.showAuthor">Author</label>
+			<label index="flexform.showViewCount">Viewcount</label>
+			<label index="flexform.showFavoriteCount">Favoritecount</label>
+			<label index="flexform.showTitle">Titles</label>
+			<label index="flexform.showDescription">Description</label>
+			<label index="flexform.showLink">Links</label>
+			<label index="flexform.showDuration">Duration</label>
+			<label index="flexform.showComments">Comments</label>
+			<label index="flexform.showThumbnail">Thumbnails</label>
+			<label index="flexform.showRating">Rating</label>
+			<label index="flexform.playerWidth">Width</label>
+			<label index="flexform.playerHeight">Height</label>
+		</languageKey>
+	</data>
+</T3locallang>

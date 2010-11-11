@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>module</type>
+		<description>Language labels for the Youtube API extension in the FRONTEND</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="tx_youtubeapi_domain_model_video">Video</label>
+			<label index="tx_youtubeapi_domain_model_video.title">title</label>
+			<label index="tx_youtubeapi_domain_model_video.author">author</label>
+			<label index="tx_youtubeapi_domain_model_video.description">description</label>
+			<label index="tx_youtubeapi_domain_model_video.vid">vid</label>
+			<label index="tx_youtubeapi_domain_model_video.keywords">keywords</label>
+			<label index="tx_youtubeapi_domain_model_video.category">category</label>
+			<label index="tx_youtubeapi_domain_model_video.assignment">assignment</label>
+			<label index="tx_youtubeapi_domain_model_video.related">related</label>
+			<label index="tx_youtubeapi_domain_model_feed">Youtube Feed</label>
+			<label index="tx_youtubeapi_domain_model_feed.url">url</label>
+			<label index="tx_youtubeapi_domain_model_user">User</label>
+			<label index="tx_youtubeapi_domain_model_user.username">username</label>
+			<label index="tx_youtubeapi_domain_model_comment">Comment</label>
+			<label index="tx_youtubeapi_domain_model_comment.title">title</label>
+			<label index="tx_youtubeapi_domain_model_comment.author">author</label>
+			<label index="tx_youtubeapi_domain_model_comment.body">body</label>
+			<label index="tx_youtubeapi_domain_model_assignment">Assignment</label>
+			<label index="tx_youtubeapi_domain_model_assignment.user">user</label>
+			<label index="tx_youtubeapi_domain_model_assignment.feed">feed</label>
+			<label index="tx_youtubeapi_domain_model_assignment.video">video</label>
+			<label index="tx_youtubeapi_domain_model_assignment.comment">comment</label>
+		</languageKey>
+	</data>
+</T3locallang>

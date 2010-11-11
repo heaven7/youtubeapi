@@ -1,0 +1,36 @@
+<f:layout name="default" />
+
+This Template is responsible for creating a table of domain objects.
+
+<f:section name="main">
+
+<f:flashMessages />
+<div>{intro}</div>
+
+<table>
+	<tr>
+		<th><f:translate key="tx_youtubeapi_domain_model_video.title" /></th>
+		<th><f:translate key="tx_youtubeapi_domain_model_video.author" /></th>
+		<th><f:translate key="tx_youtubeapi_domain_model_video.description" /></th>
+		<th><f:translate key="tx_youtubeapi_domain_model_video.vid" /></th>
+		<th><f:translate key="tx_youtubeapi_domain_model_video.keywords" /></th>
+		<th><f:translate key="tx_youtubeapi_domain_model_video.category" /></th>
+		<th> </th>
+		<th> </th>
+	</tr>
+
+	<f:for each="{videos}" as="video">
+		<tr>
+			<td><f:link.action action="show" arguments="{video : video}"> {video.title}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{video : video}"> {video.author}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{video : video}"> {video.description}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{video : video}"> {video.vid}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{video : video}"> {video.keywords}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{video : video}"> {video.category}</f:link.action></td>
+			<td><f:link.action controller="Video" action="edit" arguments="{video : video}">Edit</f:link.action></td>
+			<td><f:link.action action="delete" arguments="{video : video}">Delete</f:link.action></td>
+		</tr>
+	</f:for>
+</table>
+
+</f:section>

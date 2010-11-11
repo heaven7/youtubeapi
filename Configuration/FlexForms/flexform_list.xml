@@ -1,0 +1,384 @@
+<T3DataStructure>
+  <meta>
+    <langDisable>0</langDisable>
+  </meta>
+
+  <sheets>
+    <options>
+      <ROOT>
+        <TCEforms>
+          <sheetTitle>LLL:EXT:youtubeapi/Resources/Private/Language/locallang_db.xml:sheet_options</sheetTitle>
+        </TCEforms>
+        <type>array</type>
+        <el>
+          <settings.maxResults>
+            <TCEforms>
+              <label>LLL:EXT:youtubeapi/Resources/Private/Language/locallang_db.xml:flexform.maxResults</label>
+              <config>
+                <type>input</type>
+                <size>2</size>
+        				<eval>int</eval>
+        				<default>10</default>
+              </config>
+            </TCEforms>
+          </settings.maxResults>
+          <settings.orderBy>
+          	<TCEforms>
+          	<label>LLL:EXT:youtubeapi/Resources/Private/Language/locallang_db.xml:flexform.orderBy</label>
+          	<config>
+            	<type>select</type>
+            	<items type="array">
+              	<numIndex index="0" type="array">
+              	 <numIndex index="0">LLL:EXT:youtubeapi/Resources/Private/Language/locallang_db.xml:flexform.orderByRelevance</numIndex>
+              	 <numIndex index="1">relevance</numIndex>
+              	</numIndex>
+              	<numIndex index="1" type="array">
+              	 <numIndex index="0">LLL:EXT:youtubeapi/Resources/Private/Language/locallang_db.xml:flexform.orderByPublished</numIndex>
+              	 <numIndex index="1">published</numIndex>
+              	</numIndex>
+              	<numIndex index="2" type="array">
+              	 <numIndex index="0">LLL:EXT:youtubeapi/Resources/Private/Language/locallang_db.xml:flexform.orderByUpdated</numIndex>
+              	 <numIndex index="1">updated</numIndex>
+              	</numIndex>
+              	<numIndex index="3" type="array">
+              	 <numIndex index="0">LLL:EXT:youtubeapi/Resources/Private/Language/locallang_db.xml:flexform.orderByViewCount</numIndex>
+              	 <numIndex index="1">viewCount</numIndex>
+              	</numIndex>
+              	<numIndex index="4" type="array">
+              	 <numIndex index="0">LLL:EXT:youtubeapi/Resources/Private/Language/locallang_db.xml:flexform.orderByRating</numIndex>
+              	 <numIndex index="1">rating</numIndex>
+              	</numIndex>
+            	</items>
+          	</config>
+          	</TCEforms>
+         </settings.orderBy>
+         <settings.showEmbedded>
+        	<TCEforms>
+          	<label>LLL:EXT:youtubeapi/Resources/Private/Language/locallang_db.xml:flexform.showEmbedded</label>
+          	<config>
+            	<type>check</type>
+            	<default>0</default>
+          	</config>
+        	</TCEforms>
+          </settings.showEmbedded>
+        </el> 
+      </ROOT>
+    </options>
+    <!--
+    <pages>
+      <ROOT>
+        <TCEforms>
+          <sheetTitle>LLL:EXT:youtubeapi/Resources/Private/Language/locallang_db.xml:sheet_pages</sheetTitle>
+        </TCEforms>
+        <type>array</type>
+        <el>
+           <settings.singlePageUid>
+            <TCEforms>
+             <exclude>1</exclude>
+             <label>LLL:EXT:youtubeapi/Resources/Private/Language/locallang_db.xml:flexform.singlePage</label>
+             <config>
+              <type>group</type>
+              <internal_type>db</internal_type>
+              <allowed>pages</allowed>
+              <size>1</size>
+              <maxitems>1</maxitems>
+              <minitems>0</minitems>
+              <show_thumbs>0</show_thumbs>
+             </config>
+            </TCEforms>
+           </settings.singlePageUid>
+           
+            <settings.userPageUid>
+            <TCEforms>
+             <exclude>1</exclude>
+             <label>LLL:EXT:youtubeapi/Resources/Private/Language/locallang_db.xml:flexform.userPage</label>
+             <config>
+              <type>group</type>
+              <internal_type>db</internal_type>
+              <allowed>pages</allowed>
+              <size>1</size>
+              <maxitems>1</maxitems>
+              <minitems>0</minitems>
+              <show_thumbs>0</show_thumbs>
+             </config>
+            </TCEforms>
+           </settings.userPageUid>
+           
+            <settings.uploadPageUid>
+            <TCEforms>
+             <exclude>1</exclude>
+             <label>LLL:EXT:youtubeapi/Resources/Private/Language/locallang_db.xml:flexform.uploadPage</label>
+             <config>
+              <type>group</type>
+              <internal_type>db</internal_type>
+              <allowed>pages</allowed>
+              <size>1</size>
+              <maxitems>1</maxitems>
+              <minitems>0</minitems>
+              <show_thumbs>0</show_thumbs>
+             </config>
+            </TCEforms>
+           </settings.uploadPageUid>
+        </el>
+      </ROOT>
+    </pages>
+    -->
+    <search>
+      <ROOT>
+        <TCEforms>
+          <sheetTitle>LLL:EXT:youtubeapi/Resources/Private/Language/locallang_db.xml:sheet_search</sheetTitle>
+        </TCEforms>
+        <type>array</type>
+        <el>
+          <settings.searchTerm>
+          	<TCEforms>
+          	 <label>LLL:EXT:youtubeapi/Resources/Private/Language/locallang_db.xml:flexform.searchTerm</label>
+            	<config>
+              	<type>input</type>
+              	<size>20</size>
+            	</config>
+          	</TCEforms>
+          </settings.searchTerm>
+              
+          <settings.keywords>
+          	<TCEforms>
+            	<label>LLL:EXT:youtubeapi/Resources/Private/Language/locallang_db.xml:flexform.keywords</label>
+            	<config>
+              	<type>input</type>
+              	<size>20</size>
+            	</config>
+            	</TCEforms>
+          </settings.keywords>
+               
+          <settings.category>
+          	<TCEforms>
+          	<label>LLL:EXT:youtubeapi/Resources/Private/Language/locallang_db.xml:flexform.category</label>
+          	<config>
+            	<type>input</type>
+            	<size>20</size>
+          	</config>
+          	</TCEforms>
+          </settings.category>
+          
+          <settings.channel>
+          	<TCEforms>
+          	<label>LLL:EXT:youtubeapi/Resources/Private/Language/locallang_db.xml:flexform.channel</label>
+          	<config>
+            	<type>input</type>
+            	<size>20</size>
+          	</config>
+          	</TCEforms>
+          </settings.channel>
+          <!--
+                     
+           <settings.favorites>
+          	<TCEforms>
+          	<label>LLL:EXT:youtubeapi/Resources/Private/Language/locallang_db.xml:flexform.favorites</label>
+          	<config>
+            	<type>input</type>
+            	<size>20</size>
+          	</config>
+          	</TCEforms>
+           </settings.favorites>
+          -->
+          <settings.videoIds>
+          	<TCEforms>
+            	<label>LLL:EXT:youtubeapi/Resources/Private/Language/locallang_db.xml:flexform.videoIds</label>
+            	<config>
+              	<type>input</type>
+              	<size>20</size>
+            	</config>
+            	</TCEforms>
+          </settings.videoIds>
+            
+          <settings.playList>
+          	<TCEforms>
+          	<label>LLL:EXT:youtubeapi/Resources/Private/Language/locallang_db.xml:flexform.playList</label>
+          	<config>
+            	<type>input</type>
+            	<size>20</size>
+          	</config>
+          	</TCEforms>
+          </settings.playList>
+        </el>
+      </ROOT>
+    </search>
+    <displayParameters>
+      <ROOT>
+        <TCEforms>
+          <sheetTitle>LLL:EXT:youtubeapi/Resources/Private/Language/locallang_db.xml:sheet_displayParameters</sheetTitle>
+        </TCEforms>
+        <type>array</type>
+        <el>
+          <settings.singlePageOnListPage>
+          	<TCEforms>
+            	<label>LLL:EXT:youtubeapi/Resources/Private/Language/locallang_db.xml:flexform.singlePageOnListPage</label>
+            	<config>
+              	<type>check</type>
+              	<default>0</default>
+            	</config>
+          	</TCEforms>
+          </settings.singlePageOnListPage>
+               
+          <settings.showPageBrowser>
+          	<TCEforms>
+            	<label>LLL:EXT:youtubeapi/Resources/Private/Language/locallang_db.xml:flexform.showPageBrowser</label>
+            	<config>
+              	<type>check</type>
+              	<default>1</default>
+            	</config>
+          	</TCEforms>
+          </settings.showPageBrowser>
+          
+          <settings.showSearchBox>
+          	<TCEforms>
+            	<label>LLL:EXT:youtubeapi/Resources/Private/Language/locallang_db.xml:flexform.showSearchBox</label>
+            	<config>
+            	 <type>check</type>
+            	</config>
+          	</TCEforms>
+          </settings.showSearchBox>
+               
+          <settings.showTotalResult>
+          	<TCEforms>
+            	<label>LLL:EXT:youtubeapi/Resources/Private/Language/locallang_db.xml:flexform.showTotalResult</label>
+            	<config>
+            	 <type>check</type>
+            	</config>
+          	</TCEforms>
+          </settings.showTotalResult>
+          
+          <settings.showDescription>
+          	<TCEforms>
+            	<label>LLL:EXT:youtubeapi/Resources/Private/Language/locallang_db.xml:flexform.showDescription</label>
+            	<config>
+            	 <type>check</type>
+            	</config>
+          	</TCEforms>
+          </settings.showDescription>
+          
+          <settings.showAuthor>
+          	<TCEforms>
+            	<label>LLL:EXT:youtubeapi/Resources/Private/Language/locallang_db.xml:flexform.showAuthor</label>
+            	<config>
+              	<type>check</type>
+              	<default>1</default>
+            	</config>
+          	</TCEforms>
+          </settings.showAuthor>
+          
+          <settings.showTitle>
+          	<TCEforms>
+          	<label>LLL:EXT:youtubeapi/Resources/Private/Language/locallang_db.xml:flexform.showTitle</label>
+          	<config>
+            	<type>check</type>
+            	<default>1</default>
+          	</config>
+          	</TCEforms>
+          </settings.showTitle>
+          
+          <settings.showLink>
+          	<TCEforms>
+            	<label>LLL:EXT:youtubeapi/Resources/Private/Language/locallang_db.xml:flexform.showLink</label>
+            	<config>
+              	<type>check</type>
+              	<default>1</default>
+            	</config>
+          	</TCEforms>
+          </settings.showLink>
+          
+          <settings.showViewCount>
+          	<TCEforms>
+            	<label>LLL:EXT:youtubeapi/Resources/Private/Language/locallang_db.xml:flexform.showViewCount</label>
+            	<config>
+              	<type>check</type>
+              	<default>1</default>
+            	</config>
+          	</TCEforms>
+          </settings.showViewCount>
+          
+          <settings.showFavoriteCount>
+          	<TCEforms>
+            	<label>LLL:EXT:youtubeapi/Resources/Private/Language/locallang_db.xml:flexform.showFavoriteCount</label>
+            	<config>
+              	<type>check</type>
+              	<default>1</default>
+            	</config>
+          	</TCEforms>
+          </settings.showFavoriteCount>
+          
+          <settings.showComments>
+          	<TCEforms>
+            	<label>LLL:EXT:youtubeapi/Resources/Private/Language/locallang_db.xml:flexform.showComments</label>
+            	<config>
+              	<type>check</type>
+              	<default>1</default>
+            	</config>
+          	</TCEforms>
+          </settings.showComments>
+          
+          <settings.showDuration>
+          	<TCEforms>
+            	<label>LLL:EXT:youtubeapi/Resources/Private/Language/locallang_db.xml:flexform.showDuration</label>
+            	<config>
+              	<type>check</type>
+              	<default>1</default>
+            	</config>
+          	</TCEforms>
+          </settings.showDuration>
+          
+          <settings.showThumbnail>
+          	<TCEforms>
+            	<label>LLL:EXT:youtubeapi/Resources/Private/Language/locallang_db.xml:flexform.showThumbnail</label>
+            	<config>
+              	<type>check</type>
+              	<default>1</default>
+            	</config>
+          	</TCEforms>
+          </settings.showThumbnail>
+          
+          <settings.showRating>
+          	<TCEforms>
+            	<label>LLL:EXT:youtubeapi/Resources/Private/Language/locallang_db.xml:flexform.showRating</label>
+            	<config>
+              	<type>check</type>
+              	<default>1</default>
+            	</config>
+          	</TCEforms>
+          </settings.showRating>
+        </el>
+      </ROOT>
+    </displayParameters>
+    <player>
+      <ROOT>
+        <TCEforms>
+          <sheetTitle>LLL:EXT:youtubeapi/Resources/Private/Language/locallang_db.xml:sheet_player</sheetTitle>
+        </TCEforms>
+        <type>array</type>
+        <el>
+          <settings.playerWidth>
+          	<TCEforms>
+            	<label>LLL:EXT:youtubeapi/Resources/Private/Language/locallang_db.xml:flexform.playerWidth</label>
+            	<config>
+              	<type>input</type>
+              	<default>320</default>
+              	<size>4</size>
+            	</config>
+          	</TCEforms>
+          </settings.playerWidth>
+           
+           <settings.playerHeight>
+          	<TCEforms>
+            	<label>LLL:EXT:youtubeapi/Resources/Private/Language/locallang_db.xml:flexform.playerHeight</label>
+            	<config>
+              	<type>input</type>
+              	<size>4</size>
+              	<default>240</default>
+            	</config>
+          	</TCEforms>
+          </settings.playerHeight>
+        </el>
+      </ROOT>
+    </player>
+  </sheets>
+</T3DataStructure>
