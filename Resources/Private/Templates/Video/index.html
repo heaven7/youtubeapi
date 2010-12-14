@@ -1,33 +1,121 @@
 <f:layout name="default" />
 
 <f:section name="main">
-<h3>{query}</h3>
 
-<f:flashMessages />
-<f:if condition="{settings.showTotalResult}">
-  <p>Total: {videos.totalResult}</p>
+<div id="message"><f:flashMessages /></div>
+
+<!-- search & pagwbrowser not yet implemented...
+<p>{query}</p>
+<f:if condition="{settings.showSearchBox}">
+  <div class="tx-youtubeapi-searchbox">
+    <p>Search</p>
+    <form method="post" action="{settings.searchLink}">
+      <span><input type="text" name="tx_youtubeapi[search]" value="{settings.searchTerm}"/></span>
+        
+        <span>
+          <select name="tx_youtubeapi[type]">
+            <option value=""></option>
+            <option></option>
+            <option value="keyword">{f:translate(key:'fe_keyword')}</option>
+            <option value="channel">{f:translate(key:'fe_channel')}</option>
+            <option value="category">{f:translate(key:'fe_category')}</option>
+          </select>
+        </span>
+        
+        <span>{f:translate(key:'fe_maxResults')}</span>
+        <span>
+          <select name="tx_youtubeapi[maxResults]">
+            <option value="{settings.maxResults}"></option>
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+          </select>
+        </span>
+        
+        <input type="submit" name="submit" value="{f:translate(key:'fe_submit')}"/> 
+    </form>
+  </div>
 </f:if>
-<table>
-	<tr>
-		<th><f:translate key="tx_youtubeapi_domain_model_video.title" /></th>
-		<th><f:translate key="tx_youtubeapi_domain_model_video.author" /></th>
-		<th><f:translate key="tx_youtubeapi_domain_model_video.description" /></th>
-		<th><f:translate key="tx_youtubeapi_domain_model_video.vid" /></th>
-		<th><f:translate key="tx_youtubeapi_domain_model_video.keywords" /></th>
-		<th><f:translate key="tx_youtubeapi_domain_model_video.category" /></th>
-		<th> </th>
-		<th> </th>
-	</tr>
-	<f:for each="{videos}" as="video" key="label">
-		<tr>
-			<td><img src="{video.thumbnail}" alt="{video.title}" />{video.title}</td>
-			<td>{video.author}</td>
-			<td>{video.description}</td>
-			<td>{video.vid}</td>
-			<td>{video.keywords}</td>
-			<td>{video.category}</td>
-		</tr>
+
+<div id="authurl"><a href="{settings.authURL}">Login to comment & upload videos.</a></div>
+
+<f:if condition="{settings.showPageBrowser}">
+  <p>Pagebrowser</p>
+</f:if>
+-->
+<ul>
+<f:if condition="{settings.showTotalResult}">
+  <li class="total-result"><span>{f:translate(key:'fe_totalResults')}: {videos.totalResult}</span></li>
+</f:if>
+	<f:for each="{videos}" as="video">
+		<f:if condition="{settings.showEmbedded}">
+      <f:then>
+  		  <f:if condition="{video.flashUrl}">
+  		  
+          <li>
+            <f:render partial="embeddedVideo" 
+                      arguments="{playerWidth: settings.playerWidth,
+                                  playerHeight: settings.playerHeight,
+                                  flashUrl: video.flashUrl
+            }" />
+          </li>
+          
+  		  </f:if>
+      </f:then>
+  		<f:else>
+  		  <f:if condition="{video.thumbnail}">
+      
+      		<li>
+        		<div class="tx-youtubeapi-item">    
+          	  <p class="thumbnail">
+                <a href="{video.url}">
+                  <img src="{video.thumbnail}" alt="{video.title}" />
+                </a>
+              </p>
+          		<f:if condition="{settings.showTitle}">
+                <h3>{video.title}</h3>
+              </f:if>
+              <f:if condition="{settings.showAuthor}">
+                <p class="author">{video.author}</p>
+              </f:if>
+          		<f:if condition="{settings.showDescription}">
+                <p class="bodytext">{video.description}</p>
+              </f:if>
+          		<f:if condition="{settings.showVid}">
+                <p>{video.vid}</p>
+              </f:if>
+          		<f:if condition="{settings.showLink}">
+                <p class="url">{video.url}</p>
+              </f:if>
+          		<f:if condition="{settings.showCategory}">
+                <p>{video.category}</p>
+              </f:if>
+          		<f:if condition="{settings.showKeywords}">
+                <p>{video.keywords}</p>
+              </f:if>
+              <f:if condition="{settings.showDuration}">
+                <p class="duration">{f:translate(key:'fe_duration')}: {video.duration}</p>
+              </f:if>
+              <f:if condition="{settings.showViewCount}">
+                <p class="views">{f:translate(key:'fe_views')}: {video.viewCount}</p>
+              </f:if>
+              <f:if condition="{settings.showFavouriteCount}">
+                <p class="favorites">{f:translate(key:'fe_favorites')}: {video.favouriteCount}</p>
+              </f:if>
+              <f:if condition="{settings.showRating}">
+                <p class="rating">{f:translate(key:'fe_rating')}: {video.rating}</p>
+              </f:if>
+              <f:if condition="{settings.showCommentsCount}">
+                <p class="comments">{f:translate(key:'fe_comments')}: {video.commentsCount}</p>
+              </f:if>
+        		</div>
+      		</li>
+      		
+    		</f:if>
+      </f:else> 
+    </f:if>
 	</f:for>
-</table>
+</ul>
 
 </f:section>

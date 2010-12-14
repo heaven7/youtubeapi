@@ -1,6 +1,15 @@
 plugin.tx_youtubeapi.settings {
   maxResults = 5
   test = 'ah'
+  list {
+    playerWidth = 320
+    playerHeight = 240
+  }
+	single {
+    playerWidth = 425
+    playerHeight = 350
+  }
+
 }
 
 plugin.tx_youtubeapi._CSS_DEFAULT_STYLE (

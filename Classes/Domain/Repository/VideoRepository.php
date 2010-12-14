@@ -91,11 +91,10 @@ class Tx_Youtubeapi_Domain_Repository_VideoRepository extends Tx_Extbase_Persist
 	public function getVideos() {
     $videoFeed = $this->yt->getVideoFeed($this->query);
     $this->totalResult = $videoFeed->getTotalResults()->getText();
-    $videos = array();
     $videos['totalResult'] = $this->totalResult;
     foreach ($videoFeed as $entry) {
       $video = $this->getVideoMetadata($entry);
-      array_push($videos, $video);
+      $videos[] = $video;
     }
     return $videos;
 	}
@@ -121,8 +120,8 @@ class Tx_Youtubeapi_Domain_Repository_VideoRepository extends Tx_Extbase_Persist
     $video['duration'] = $this->durationInMinutes($entry->mediaGroup->duration->seconds);
     $video['url'] = $movieUrl;
     $video['viewCount'] = $entry->statistics->viewCount;
-    //$video['rating'] = $entry->rating->average;
-    $video['rating'] = $entry->getVideoRatingInfo();
+    $video['rating'] = $entry->rating->average;
+    //$video['rating'] = $entry->getVideoRatingInfo();
     $video['numRaters'] = $entry->rating->numRaters;
     $video['flashUrl'] = $this->getFlashUrl($entry);
     $video['vid'] = $entry->getVideoId();

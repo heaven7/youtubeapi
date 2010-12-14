@@ -74,7 +74,6 @@ class Tx_Youtubeapi_Controller_VideoController extends Tx_Extbase_MVC_Controller
 	 * @return string
 	 */
 	public function indexAction() {
-    print_r($this->settings);
     $this->videoRepository->setQuery($this->settings);
     $queryUrl = $this->videoRepository->getQueryUrl();
 		$videos = $this->videoRepository->getVideos();
