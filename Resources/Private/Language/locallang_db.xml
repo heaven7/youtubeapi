@@ -58,6 +58,8 @@
 			<label index="flexform.showSearchBox">Searchbox</label>
 			<label index="flexform.showTotalResult">Total result</label>
 			<label index="flexform.showPageBrowser">Pagebrowser</label>
+			<label index="flexform.showKeywords">Keywords</label>
+			<label index="flexform.showCategory">Category</label>
 			<label index="flexform.showAuthor">Author</label>
 			<label index="flexform.showViewCount">Viewcount</label>
 			<label index="flexform.showFavoriteCount">Favoritecount</label>

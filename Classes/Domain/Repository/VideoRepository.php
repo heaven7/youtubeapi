@@ -118,7 +118,7 @@ class Tx_Youtubeapi_Domain_Repository_VideoRepository extends Tx_Extbase_Persist
     $video['author'] = $authorUsername;
     $video['keywords'] = $entry->mediaGroup->keywords;
     $video['duration'] = $this->durationInMinutes($entry->mediaGroup->duration->seconds);
-    $video['url'] = $movieUrl;
+    $video['url'] = $entry->mediaGroup->player[0]->url;
     $video['viewCount'] = $entry->statistics->viewCount;
     $video['rating'] = $entry->rating->average;
     //$video['rating'] = $entry->getVideoRatingInfo();

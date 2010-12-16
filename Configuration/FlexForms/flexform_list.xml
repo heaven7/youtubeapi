@@ -238,6 +238,24 @@
             	</config>
           	</TCEforms>
           </settings.showSearchBox>
+             
+          <settings.showKeywords>
+          	<TCEforms>
+            	<label>LLL:EXT:youtubeapi/Resources/Private/Language/locallang_db.xml:flexform.showKeywords</label>
+            	<config>
+            	 <type>check</type>
+            	</config>
+          	</TCEforms>
+          </settings.showKeywords>
+           
+          <settings.showCategory>
+          	<TCEforms>
+            	<label>LLL:EXT:youtubeapi/Resources/Private/Language/locallang_db.xml:flexform.showCategory</label>
+            	<config>
+            	 <type>check</type>
+            	</config>
+          	</TCEforms>
+          </settings.showCategory>
                
           <settings.showTotalResult>
           	<TCEforms>
