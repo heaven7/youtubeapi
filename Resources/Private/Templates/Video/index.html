@@ -3,7 +3,7 @@
 <f:section name="main">
 
 <div id="message"><f:flashMessages /></div>
-
+<f:debug title="Query">{query}</f:debug>
 <!-- search & pagwbrowser not yet implemented...
 <p>{query}</p>
 <f:if condition="{settings.showSearchBox}">
@@ -41,7 +41,7 @@
 <div id="authurl"><a href="{settings.authURL}">Login to comment & upload videos.</a></div>
 
 <f:if condition="{settings.showPageBrowser}">
-  <p>Pagebrowser</p>
+  <f:render partial="pageBrowser" arguments="{page: page, count: video.totalResult, numPages: 5}" />
 </f:if>
 -->
 <ul>
@@ -100,7 +100,7 @@
           <p class="favorites">{f:translate(key:'fe_favorites')}: {video.favouriteCount}</p>
         </f:if>
         <f:if condition="{settings.showRating}">
-          <p class="rating">{f:translate(key:'fe_rating')}: {video.rating}</p>
+          <p class="rating">{f:translate(key:'fe_rating')}: {video.rating} ({video.numRaters})</p>
         </f:if>
         <f:if condition="{settings.showCommentsCount}">
           <p class="comments">{f:translate(key:'fe_comments')}: {video.commentsCount}</p>

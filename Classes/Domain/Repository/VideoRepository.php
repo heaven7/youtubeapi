@@ -125,7 +125,7 @@ class Tx_Youtubeapi_Domain_Repository_VideoRepository extends Tx_Extbase_Persist
     $video['numRaters'] = $entry->rating->numRaters;
     $video['flashUrl'] = $this->getFlashUrl($entry);
     $video['vid'] = $entry->getVideoId();
-    
+    $video['commentsCount'] = $this->yt->getVideoCommentFeed($video['vid'])->totalResults->text;
     return $video;
     
   }

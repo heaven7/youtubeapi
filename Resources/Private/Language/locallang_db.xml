@@ -67,7 +67,7 @@
 			<label index="flexform.showDescription">Description</label>
 			<label index="flexform.showLink">Links</label>
 			<label index="flexform.showDuration">Duration</label>
-			<label index="flexform.showComments">Comments</label>
+			<label index="flexform.showCommentsCount">Comments</label>
 			<label index="flexform.showThumbnail">Thumbnails</label>
 			<label index="flexform.showRating">Rating</label>
 			<label index="flexform.playerWidth">Width</label>
