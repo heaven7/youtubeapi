@@ -1,11 +1,11 @@
+{namespace ytapi = Tx_Youtubeapi_ViewHelpers}
 <f:layout name="default" />
 
 <f:section name="main">
 
 <div id="message"><f:flashMessages /></div>
-<f:debug title="Query">{query}</f:debug>
 <!-- search & pagwbrowser not yet implemented...
-<p>{query}</p>
+<f:debug title="Query">{query}</f:debug>
 <f:if condition="{settings.showSearchBox}">
   <div class="tx-youtubeapi-searchbox">
     <p>Search</p>
@@ -41,7 +41,6 @@
 <div id="authurl"><a href="{settings.authURL}">Login to comment & upload videos.</a></div>
 -->
 <f:if condition="{settings.showPageBrowser}">
-  {namespace ytapi = Tx_Youtubeapi_ViewHelpers}
   <ytapi:PageBrowser numberOfPages="{videos.numberOfPages}" prefixId="tx_youtubeapi" pageParameterName="page" />
 </f:if>
 
@@ -111,7 +110,6 @@
 	</f:for>
 </ul>
 <f:if condition="{settings.showPageBrowser}">
-  {namespace ytapi = Tx_Youtubeapi_ViewHelpers}
   <ytapi:PageBrowser numberOfPages="{videos.numberOfPages}" prefixId="tx_youtubeapi" pageParameterName="page" />
-</f:if>
+</f:if> 
 </f:section>
