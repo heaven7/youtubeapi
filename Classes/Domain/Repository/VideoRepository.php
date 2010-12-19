@@ -50,11 +50,11 @@ class Tx_Youtubeapi_Domain_Repository_VideoRepository extends Tx_Extbase_Persist
 	 */
 	public function setQuery($settings) {
 	  $this->settings = $settings;
-    $this->vars = t3lib_div::_GET('tx_youtubeapi_pi1');
+    $this->vars = t3lib_div::_GET('tx_youtubeapi');
     $limit = $this->settings['maxResults'];
     if ($this->vars) {
       $page = (int)$this->vars[page];
-  		$start = ($page - 1) * $this->limit + 1;
+  		$start = $page * $limit + 1;
 		} else {
       $start = 1;
     }
@@ -90,8 +90,9 @@ class Tx_Youtubeapi_Domain_Repository_VideoRepository extends Tx_Extbase_Persist
 	 */
 	public function getVideos() {
     $videoFeed = $this->yt->getVideoFeed($this->query);
-    $this->totalResult = $videoFeed->getTotalResults()->getText();
+    $this->totalResult = (int)$videoFeed->getTotalResults()->getText();
     $videos['totalResult'] = $this->totalResult;
+    $videos['numberOfPages'] =($videos['totalResult'] / $this->settings['maxResults']);
     foreach ($videoFeed as $entry) {
       $video = $this->getVideoMetadata($entry);
       $videos[] = $video;

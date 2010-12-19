@@ -39,11 +39,12 @@
 </f:if>
 
 <div id="authurl"><a href="{settings.authURL}">Login to comment & upload videos.</a></div>
-
-<f:if condition="{settings.showPageBrowser}">
-  <f:render partial="pageBrowser" arguments="{page: page, count: video.totalResult, numPages: 5}" />
-</f:if>
 -->
+<f:if condition="{settings.showPageBrowser}">
+  {namespace ytapi = Tx_Youtubeapi_ViewHelpers}
+  <ytapi:PageBrowser numberOfPages="{videos.numberOfPages}" prefixId="tx_youtubeapi" pageParameterName="page" />
+</f:if>
+
 <ul>
 <f:if condition="{settings.showTotalResult}">
   <li class="total-result"><span>{f:translate(key:'fe_totalResults')}: {videos.totalResult}</span></li>
@@ -109,5 +110,8 @@
     </f:if>
 	</f:for>
 </ul>
-
+<f:if condition="{settings.showPageBrowser}">
+  {namespace ytapi = Tx_Youtubeapi_ViewHelpers}
+  <ytapi:PageBrowser numberOfPages="{videos.numberOfPages}" prefixId="tx_youtubeapi" pageParameterName="page" />
+</f:if>
 </f:section>
