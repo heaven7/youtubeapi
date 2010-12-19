@@ -1,0 +1,41 @@
+<div class="tx-youtubeapi-single">      
+  <f:render partial="embeddedVideo" 
+            arguments="{playerWidth: settings.single.playerWidth,
+                        playerHeight: settings.single.playerHeight,
+                        flashUrl: video.flashUrl
+  }" />
+  <h2>{video.title}</h2>
+  <f:if condition="{settings.single.showAuthor}">
+    <p class="author"><a href="{video.authorUrl}">{video.author}</a></p>
+  </f:if>
+	<f:if condition="{settings.single.showDescription}">
+    <p class="bodytext">{video.description}</p>
+  </f:if>
+	<f:if condition="{settings.single.showVid}">
+    <p>{video.vid}</p>
+  </f:if>
+	<f:if condition="{settings.single.showLink}">
+    <p class="url">{video.url}</p>
+  </f:if>
+	<f:if condition="{settings.single.showCategory}">
+    <p class="category">{f:translate(key:'fe_category')}: {video.category}</p>
+  </f:if>
+	<f:if condition="{settings.single.showKeywords}">
+    <p class="keywords">{f:translate(key:'fe_keywords')}: {video.keywords}</p>
+  </f:if>
+  <f:if condition="{settings.single.showDuration}">
+    <p class="duration">{f:translate(key:'fe_duration')}: {video.duration}</p>
+  </f:if>
+  <f:if condition="{settings.single.showViewCount}">
+    <p class="views">{f:translate(key:'fe_views')}: {video.viewCount}</p>
+  </f:if>
+  <f:if condition="{settings.single.showFavouriteCount}">
+    <p class="favorites">{f:translate(key:'fe_favorites')}: {video.favouriteCount}</p>
+  </f:if>
+  <f:if condition="{settings.single.showRating}">
+    <p class="rating">{f:translate(key:'fe_rating')}: {video.rating} ({video.numRaters})</p>
+  </f:if>
+  <f:if condition="{settings.single.showCommentsCount}">
+    <p class="comments">{f:translate(key:'fe_comments')}: {video.commentsCount}</p>
+  </f:if>
+</div>

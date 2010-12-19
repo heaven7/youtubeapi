@@ -44,7 +44,7 @@
   <ytapi:PageBrowser numberOfPages="{videos.numberOfPages}" prefixId="tx_youtubeapi" pageParameterName="page" />
 </f:if>
 
-<ul>
+<ul class="tx-youtubeapi-list">
 <f:if condition="{settings.showTotalResult}">
   <li class="total-result"><span>{f:translate(key:'fe_totalResults')}: {videos.totalResult}</span></li>
 </f:if>
@@ -109,7 +109,13 @@
     </f:if>
 	</f:for>
 </ul>
+<f:if condition="{settings.singlePageOnListPage}">
+  <f:render partial="singleVideo" arguments="{video: videos.0, settings:settings}" />
+</f:if> 
+
 <f:if condition="{settings.showPageBrowser}">
   <ytapi:PageBrowser numberOfPages="{videos.numberOfPages}" prefixId="tx_youtubeapi" pageParameterName="page" />
 </f:if> 
+
+
 </f:section>

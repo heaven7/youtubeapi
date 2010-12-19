@@ -79,7 +79,20 @@ class Tx_Youtubeapi_Controller_VideoController extends Tx_Extbase_MVC_Controller
 		$videos = $this->videoRepository->getVideos();
 		$this->view->assign('videos', $videos);
 		$this->view->assign('query', $queryUrl);
-		
+		if($this->settings['singlePageOnListPage']) {
+      $this->response->addAdditionalHeaderData('
+        <style>
+          .tx-youtubeapi-list {
+      			float:left;	
+      			width:50%;
+      			padding:0.5em;
+      		}
+      		
+      		.tx-youtubeapi-single {
+      			padding:0.5em;
+      		}
+        </style>');
+    }
 		$this->view->assign('settings', $this->settings);
 
 	}

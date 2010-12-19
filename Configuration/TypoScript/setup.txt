@@ -8,6 +8,18 @@ plugin.tx_youtubeapi.settings {
 	single {
     playerWidth = 425
     playerHeight = 350
+    showAuthor = 1
+    showDescription = 1
+    showVid = 1
+    showLink = 1
+    showCategory = 1
+    showKeywords = 1
+    showDuration = 1
+    showViewCount = 1
+    showFavouriteCount = 1
+    showRating = 1
+    showCommentsCount = 1
+    showComments = 1
   }
 
 }
