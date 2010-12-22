@@ -4,18 +4,15 @@
 <f:section name="main">
 
 <div id="message"><f:flashMessages /></div>
-<!-- search & pagwbrowser not yet implemented...
 <f:debug title="Query">{query}</f:debug>
 <f:if condition="{settings.showSearchBox}">
   <div class="tx-youtubeapi-searchbox">
-    <p>Search</p>
-    <form method="post" action="{settings.searchLink}">
-      <span><input type="text" name="tx_youtubeapi[search]" value="{settings.searchTerm}"/></span>
-        
+    <f:form method="post" action="index">
+       <span><f:form.textbox property="search" name="search" value="{settings.searchTerm}" /></span>
+      
         <span>
-          <select name="tx_youtubeapi[type]">
+          <select name="tx_youtubeapi_pi1[type]">
             <option value=""></option>
-            <option></option>
             <option value="keyword">{f:translate(key:'fe_keyword')}</option>
             <option value="channel">{f:translate(key:'fe_channel')}</option>
             <option value="category">{f:translate(key:'fe_category')}</option>
@@ -24,8 +21,8 @@
         
         <span>{f:translate(key:'fe_maxResults')}</span>
         <span>
-          <select name="tx_youtubeapi[maxResults]">
-            <option value="{settings.maxResults}"></option>
+          <select name="tx_youtubeapi_pi1[maxResults]">
+            <option value=""></option>
             <option value="5">5</option>
             <option value="10">10</option>
             <option value="25">25</option>
@@ -34,25 +31,25 @@
         </span>
         
         <input type="submit" name="submit" value="{f:translate(key:'fe_submit')}"/> 
-    </form>
+    </f:form>
   </div>
 </f:if>
 
 <div id="authurl"><a href="{settings.authURL}">Login to comment & upload videos.</a></div>
--->
+
 <f:if condition="{settings.showPageBrowser}">
   <ytapi:PageBrowser numberOfPages="{videos.numberOfPages}" prefixId="tx_youtubeapi" pageParameterName="page" />
 </f:if>
 
-<ul class="tx-youtubeapi-list">
+<ul class="tx-youtubeapi-video-list">
 <f:if condition="{settings.showTotalResult}">
   <li class="total-result"><span>{f:translate(key:'fe_totalResults')}: {videos.totalResult}</span></li>
 </f:if>
 	<f:for each="{videos}" as="video">
     <f:if condition="{video.url}">
-      <li><div class="tx-youtubeapi-item">
+      <li><div class="tx-youtubeapi-video-item">
         <f:if condition="{settings.showTitle}">
-          <h3>{video.title}</h3>
+          <h3><a href="{video.url}">{video.title}</a></h3>
         </f:if>
   		  <f:if condition="{settings.showEmbedded}">
           <f:then>
@@ -69,6 +66,9 @@
                   <img src="{video.thumbnail}" alt="{video.title}" />
                 </a>
               </p>
+              <!--
+              <f:link.action arguments="{start:video.count}">{video.vid}</f:link.action>
+              -->
            </f:if>  
           </f:else> 
         </f:if>   		
@@ -110,11 +110,11 @@
 	</f:for>
 </ul>
 <f:if condition="{settings.singlePageOnListPage}">
-  <f:render partial="singleVideo" arguments="{video: videos.0, settings:settings}" />
+  <f:render partial="singleVideo" arguments="{video:videos.0, settings:settings, comments:comments}" />
 </f:if> 
 
 <f:if condition="{settings.showPageBrowser}">
-  <ytapi:PageBrowser numberOfPages="{videos.numberOfPages}" prefixId="tx_youtubeapi" pageParameterName="page" />
+  <ytapi:PageBrowser numberOfPages="{videos.numberOfPages}" prefixId="tx_youtubeapi_pi1" pageParameterName="page" />
 </f:if> 
 
 

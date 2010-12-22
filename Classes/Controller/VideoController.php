@@ -80,21 +80,27 @@ class Tx_Youtubeapi_Controller_VideoController extends Tx_Extbase_MVC_Controller
 		$this->view->assign('videos', $videos);
 		$this->view->assign('query', $queryUrl);
 		if($this->settings['singlePageOnListPage']) {
+		  $comments = $this->videoRepository->getComments($videos[0][vid]);
+		  $this->view->assign('comments', $comments);
       $this->response->addAdditionalHeaderData('
         <style>
-          .tx-youtubeapi-list {
+          .tx-youtubeapi-video-list {
       			float:left;	
       			width:50%;
       			padding:0.5em;
       		}
       		
-      		.tx-youtubeapi-single {
+      		.tx-youtubeapi-video-single {
       			padding:0.5em;
       		}
+      		
+      		.tx-pagebrowse-pi1 {
+            clear: both;
+          }
         </style>');
     }
+    
 		$this->view->assign('settings', $this->settings);
-
 	}
 
 	/**

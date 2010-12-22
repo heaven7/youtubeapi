@@ -1,4 +1,4 @@
-<div class="tx-youtubeapi-single">      
+<div class="tx-youtubeapi-video-single">      
   <f:render partial="embeddedVideo" 
             arguments="{playerWidth: settings.single.playerWidth,
                         playerHeight: settings.single.playerHeight,
@@ -36,6 +36,13 @@
     <p class="rating">{f:translate(key:'fe_rating')}: {video.rating} ({video.numRaters})</p>
   </f:if>
   <f:if condition="{settings.single.showCommentsCount}">
-    <p class="comments">{f:translate(key:'fe_comments')}: {video.commentsCount}</p>
+    <p class="comments-count">{f:translate(key:'fe_comments')}: {video.commentsCount}</p>
+    <div class="tx-youtubeapi-comment-list">
+      <f:for each="{comments}" as="comment">
+        <p class="comment-content">{comment.content}</p>
+        <p class="comment-author"><a href="{comment.authorUrl}">{comment.author}</a></p>
+        <p class="comment-published">{comment.published}</p>
+      </f:for>
+    </div>
   </f:if>
 </div>

@@ -50,7 +50,18 @@ class Tx_Youtubeapi_Domain_Repository_VideoRepository extends Tx_Extbase_Persist
 	 */
 	public function setQuery($settings) {
 	  $this->settings = $settings;
-    $this->vars = t3lib_div::_GET('tx_youtubeapi');
+    $this->vars = t3lib_div::_GET('tx_youtubeapi_pi1');
+    $this->postvars = t3lib_div::_POST('tx_youtubeapi_pi1');
+    
+    if($this->postvars[search]) {
+      $GLOBALS['TSFE']->fe_user->setKey("ses","search",$this->postvars[search]);
+      $this->settings['searchTerms'] = $GLOBALS["TSFE"]->fe_user->getKey("ses", "search");
+    }
+    
+    if($this->postvars[maxResults]) {
+      $GLOBALS['TSFE']->fe_user->setKey("ses","maxResults",$this->postvars[maxResults]);
+    }
+    $this->settings['maxResults'] = $GLOBALS["TSFE"]->fe_user->getKey("ses", "maxResults") ? $GLOBALS["TSFE"]->fe_user->getKey("ses", "maxResults") : $this->settings['maxResults'];
     $limit = $this->settings['maxResults'];
     if ($this->vars) {
       $page = (int)$this->vars[page];
@@ -58,17 +69,40 @@ class Tx_Youtubeapi_Domain_Repository_VideoRepository extends Tx_Extbase_Persist
 		} else {
       $start = 1;
     }
-    
   	$this->yt = new Zend_Gdata_YouTube();
 		$this->query = $this->yt->newVideoQuery();
     $this->query->orderBy = $this->settings['orderBy'];	
-		$this->query->startIndex = (int)$start;
+		$this->query->startIndex = $this->vars['start'] ? $this->vars['start'] : (int)$start;
 		$this->query->maxResults = (int)$limit;
-		$this->query->videoQuery = $this->settings['searchTerm'];
-    if($this->settings['keywords']) $this->query->category = $this->_keyworded($this->settings['keywords']);
-    if($this->settings['category'] && !$this->settings['keywords']) $this->query->category = $this->_categorized($this->settings['category']);  
-    if($this->settings['keywords'] && $this->settings['category']) $this->query->category = $this->_categorized($this->settings['category']) . "/". $this->_keyworded($this->settings['keywords']);
-     
+		
+    // Build search (flexform values will be overidden by searchoptions in FE)
+    if ($this->postvars[type] == "") {
+      $this->query->videoQuery = $this->postvars[search] ? $this->postvars[search] : $this->settings['searchTerm'];
+    }
+    // searching by keywords
+    if($this->settings['keywords'] || $this->postvars[type] == "keyword") {
+      $keywords = $this->postvars[search] ? $this->postvars[search] : $this->settings['keywords'];
+      $this->query->category =$this->_keyworded($keywords);
+    }
+    
+    // searching by category
+    if(($this->settings['category'] || $this->postvars[type] == "category") && !$this->settings['keywords']) {
+      $category = $this->postvars[search] ? $this->postvars[search] : $this->settings['category'];
+      $this->query->category = $this->_categorized($category);  
+    }
+    
+    // searching by category and keywords
+    if(($this->settings['keywords']|| $this->postvars[type] == "keyword") && ($this->settings['category'] || $this->postvars[type] == "category")) {
+      if($this->settings['keywords'] && $this->postvars[type] == "category") {
+        $keywords = $this->settings['keywords'];
+        $category = $this->postvars[search];
+      }
+      if($this->settings['category'] && $this->postvars[type] == "keyword") {
+        $keywords = $this->postvars[search];
+        $category = $this->settings['category'];
+      }
+      $this->query->category = $this->_categorized($category) . "/". $this->_keyworded($keywords);
+    } 
 	}
 
   /**
@@ -93,8 +127,11 @@ class Tx_Youtubeapi_Domain_Repository_VideoRepository extends Tx_Extbase_Persist
     $this->totalResult = (int)$videoFeed->getTotalResults()->getText();
     $videos['totalResult'] = $this->totalResult;
     $videos['numberOfPages'] =($videos['totalResult'] / $this->settings['maxResults']);
+    $count = 0;
     foreach ($videoFeed as $entry) {
+      $count++;
       $video = $this->getVideoMetadata($entry);
+      $video['count'] = $count;
       $videos[] = $video;
     }
     return $videos;
@@ -126,10 +163,46 @@ class Tx_Youtubeapi_Domain_Repository_VideoRepository extends Tx_Extbase_Persist
     $video['numRaters'] = $entry->rating->numRaters;
     $video['flashUrl'] = $this->getFlashUrl($entry);
     $video['vid'] = $entry->getVideoId();
-    $video['commentsCount'] = $this->yt->getVideoCommentFeed($video['vid'])->totalResults->text;
+    $video['commentsCount'] = $this->yt->getVideoCommentFeed($video['vid'])->getTotalResults()->getText();
     return $video;
     
   }
+  
+  /**
+	 * Get Comments
+	 *
+	 * @param Tx_Youtubeapi_Domain_Model_Comment $comments The Comments
+	 * @return Tx_Youtubeapi_Domain_Model_Comment $comments The Comments
+	 */
+	public function getComments($vid) {
+    $commentsFeed = $this->yt->getVideoCommentFeed($vid);
+    $comments['totalResult'] = (int)$commentsFeed->getTotalResults()->getText();
+    $comments['numberOfPages'] =($comments['totalResult'] / $this->settings['maxResults']);
+    $count = 0;
+		foreach ($commentsFeed as $commentEntry) {
+		  $count++;
+      $comment = $this->getCommentMetadata($commentEntry);
+      $comment['count'] = $count;
+      $comments[] = $comment;
+    }
+    return $comments;
+	}
+	
+	/**
+	 * Get getCommentMetaData
+	 *
+	 * @param Tx_Youtubeapi_Domain_Model_Comment $comments The Comments
+	 * @return Tx_Youtubeapi_Domain_Model_Comment $comments The Comments
+	 */
+	function getCommentMetadata($entry) {
+	  $comment = array();
+	  $comment['title'] = $entry->title->text;
+	  $comment['content'] = $entry->getContent()->getText();
+	  $comment['author'] = $entry->author[0]->name->getText();
+	  $comment['authorUrl'] = 'http://www.youtube.com/profile?user=' . $comment['author'];		  
+	  $comment['published'] = $entry->getPublished()->getText();
+	  return $comment;
+	}
   
   /**
 	 * Get getFlashUrl

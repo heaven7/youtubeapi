@@ -3,7 +3,7 @@
 class Tx_Youtubeapi_ViewHelpers_PageBrowserViewHelper extends Tx_Fluid_Core_ViewHelper_AbstractViewHelper {
   
   /**
-  * @param integer $totalResults
+  * @param string $pageParameterName
   * @param integer $numberOfPages
   * @param string $prefixId  
   * @return string The paginator  
@@ -14,7 +14,7 @@ class Tx_Youtubeapi_ViewHelpers_PageBrowserViewHelper extends Tx_Fluid_Core_View
     $conf = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_pagebrowse_pi1.'];
     // Modify this configuration
     $conf += array(
-    'pageParameterName' => $prefixId . '|'.$pageParameterName,
+    'pageParameterName' => 'tx_youtubeapi_pi1' . '|'.$pageParameterName,
     'numberOfPages' => intval($numberOfPages)
     );
     // Get page browser
