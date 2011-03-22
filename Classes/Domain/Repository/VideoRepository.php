@@ -70,10 +70,11 @@ class Tx_Youtubeapi_Domain_Repository_VideoRepository extends Tx_Extbase_Persist
       $start = 1;
     }
   	$this->yt = new Zend_Gdata_YouTube();
-		$this->query = $this->yt->newVideoQuery();
+  	$this->query = $this->yt->newVideoQuery();
     $this->query->orderBy = $this->settings['orderBy'];	
 		$this->query->startIndex = $this->vars['start'] ? $this->vars['start'] : (int)$start;
 		$this->query->maxResults = (int)$limit;
+		print_r($this->settings['channel']);
 		
     // Build search (flexform values will be overidden by searchoptions in FE)
     if ($this->postvars[type] == "") {
@@ -102,7 +103,20 @@ class Tx_Youtubeapi_Domain_Repository_VideoRepository extends Tx_Extbase_Persist
         $category = $this->settings['category'];
       }
       $this->query->category = $this->_categorized($category) . "/". $this->_keyworded($keywords);
-    } 
+    }
+	}
+
+  /**
+	 * getUserUploads
+	 *
+	 * @param Tx_Youtubeapi_Domain_Model_Video $userUploads
+	 * @return
+	 */
+	public function getUserUploads($channel) {   
+  	$this->yt = new Zend_Gdata_YouTube();
+	  $videoFeed = $this->yt->getUserUploads($channel);
+	   
+    return $this->processFeed($videoFeed);
 	}
 
   /**
@@ -124,6 +138,17 @@ class Tx_Youtubeapi_Domain_Repository_VideoRepository extends Tx_Extbase_Persist
 	 */
 	public function getVideos() {
     $videoFeed = $this->yt->getVideoFeed($this->query);
+    
+    return $this->processFeed($videoFeed);
+	}
+	
+	/**
+	 * Process Feed
+	 *
+	 * @param Tx_Youtubeapi_Domain_Model_Video $videos The Videos
+	 * @return Tx_Youtubeapi_Domain_Model_Video $videos The Videos
+	 */
+	function processFeed($videoFeed) {
     $this->totalResult = (int)$videoFeed->getTotalResults()->getText();
     $videos['totalResult'] = $this->totalResult;
     $videos['numberOfPages'] =($videos['totalResult'] / $this->settings['maxResults']);
@@ -135,7 +160,7 @@ class Tx_Youtubeapi_Domain_Repository_VideoRepository extends Tx_Extbase_Persist
       $videos[] = $video;
     }
     return $videos;
-	}
+  }
 	
 	/**
 	 * Get getVideoMetaData

@@ -74,11 +74,15 @@ class Tx_Youtubeapi_Controller_VideoController extends Tx_Extbase_MVC_Controller
 	 * @return string
 	 */
 	public function indexAction() {
-    $this->videoRepository->setQuery($this->settings);
-    $queryUrl = $this->videoRepository->getQueryUrl();
-		$videos = $this->videoRepository->getVideos();
+	  if($this->settings['channel']) {
+	    $videos = $this->videoRepository->getUserUploads($this->settings['channel']); 
+    } else {
+      $this->videoRepository->setQuery($this->settings);
+      $queryUrl = $this->videoRepository->getQueryUrl(); 
+		  $videos = $this->videoRepository->getVideos($query); 
+		  $this->view->assign('query', $queryUrl);
+    }       
 		$this->view->assign('videos', $videos);
-		$this->view->assign('query', $queryUrl);
 		if($this->settings['singlePageOnListPage']) {
 		  $comments = $this->videoRepository->getComments($videos[0][vid]);
 		  $this->view->assign('comments', $comments);
